@@ -1,4 +1,3 @@
-import { MovieFilter } from '@mui/icons-material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,32 +13,11 @@ const navItems = [
   { text: 'About', link: '/about' }
 ];
 
-
-
-const Navbar = (movies, setSearchResult) => {
-  // const handleSubmit = (e) => e.preventDefault()
-  // const handleSearchChange = (e) => {
-  //   if (!e.target.value) return setSearchResult(movies)
-
-  //   const resultArray = movies.filter(movie => 
-  //   movie.title.includes(e.target.value) || movie.body.includes(e.target.value))
-  //   setSearchResult(resultArray)}
+const Navbar = () => {
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar>
-        {/* <form className='search' onSubmit={handleSubmit}>
-          <input className='searchInput'
-          type= "search"
-          id = "search"
-          onChange={handleSearchChange}
-          ></input>
-          <button className='searchButton'
-          color='black'>
-          Search
-          </button>
-        </form> */}
         <Toolbar>
-          <MovieFilter sx={{ display: 'flex', mr: 1 }} />
           <Typography
             variant="h6"
             sx={{

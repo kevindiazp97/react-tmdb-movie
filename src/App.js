@@ -9,14 +9,12 @@ import { Outlet } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import theme from './themes/theme';
-import SearchBar from './components/SearchBar';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <Navbar />
-        <SearchBar />
         <Outlet/>
       </div>
     </ThemeProvider>
