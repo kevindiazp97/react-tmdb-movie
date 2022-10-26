@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import { modalStyles } from '../themes/stylemodal';
 // import { Modal , show } from 'react-bootstrap'
 
 import * as React from 'react';
@@ -41,13 +42,34 @@ const MovieCard = ({ movie }) => {
             <Box sx={{ ml: 2 }}>{movie.vote_average.toFixed(1)}</Box>
           </Box>
           <Button onClick={() => setShow(true)}>Read More</Button>
-        </CardContent>
+          <Modal open = {show} onClose = {() => setShow(false)}>
+            <Box sx={modalStyles.wrapper}>
+            <CardMedia
+            component="img"
+            sx={{ width: 150, height: 225 }}
+            image={`${BASE_IMAGE_URL}${movie.poster_path}`}
+            alt="Movie poster"
+            />
+            <Typography component="div" variant="h6">
+            {movie.title}
+          </Typography>
+          <Box
+            sx={{
+              width: 200,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <Rating name="read-only" precision={0.1} value={movie.vote_average / 2} max={5} readOnly />
+            <Box sx={{ ml: 2 }}>{movie.vote_average.toFixed(1)}</Box>
+          </Box>
+          <br></br>
+          <h6>Overview</h6>
+          <p>{movie.overview}</p>
+            </Box>
+            </Modal>
+            </CardContent>
       </Box>
-      <Modal show = {show} onClose = {() => setShow(false)}>
-        <Box>
-        This Is Modal
-        </Box>
-        </Modal>
     </Card>
   );
 }
