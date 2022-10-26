@@ -2,11 +2,18 @@ import { Box, CardMedia, Rating } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+// import { Modal , show } from 'react-bootstrap'
+
 import * as React from 'react';
 
 const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original";
 
+
 const MovieCard = ({ movie }) => {
+  const [show, setShow] = React.useState(false)
+
   return (
     <Card id={movie.id} sx={{ display: 'flex', width: 400, margin: 5 }}>
       <CardMedia
@@ -33,8 +40,14 @@ const MovieCard = ({ movie }) => {
             <Rating name="read-only" precision={0.1} value={movie.vote_average / 2} max={5} readOnly />
             <Box sx={{ ml: 2 }}>{movie.vote_average.toFixed(1)}</Box>
           </Box>
+          <Button onClick={() => setShow(true)}>Read More</Button>
         </CardContent>
       </Box>
+      <Modal show = {show} onClose = {() => setShow(false)}>
+        <Box>
+        This Is Modal
+        </Box>
+        </Modal>
     </Card>
   );
 }
