@@ -1,3 +1,5 @@
+import { MovieFilter } from '@mui/icons-material';
+import { Search } from '@mui/icons-material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,6 +8,8 @@ import * as React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import UserLog from './UserLog';
+import { styleSearch } from '../themes/styleSearch';
+import { TextField } from '@mui/material';
 
 const navItems = [
   { text: 'Indonesian', link: '/indonesian' },
@@ -18,6 +22,7 @@ const Navbar = () => {
     <Box sx={{ display: 'flex' }}>
       <AppBar>
         <Toolbar>
+          <MovieFilter sx={{ display: 'flex', mr: 1 }} />
           <Typography
             variant="h6"
             sx={{

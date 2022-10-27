@@ -5,7 +5,6 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { modalStyles } from '../themes/stylemodal';
-// import { Modal , show } from 'react-bootstrap'
 
 import * as React from 'react';
 
