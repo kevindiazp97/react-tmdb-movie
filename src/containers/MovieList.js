@@ -1,6 +1,10 @@
 import { Box, Button } from '@mui/material';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Search } from '@mui/icons-material';
+import { styleSearch } from '../themes/styleSearch';
+import { TextField } from '@mui/material';
+import React from 'react';
 
 import MovieCard from '../components/MovieCard';
 import useMovieStore, { selectFetchMovies, selectMovies, selectMoviesReady, selectSortMovies } from '../store/movie';
@@ -11,6 +15,10 @@ const MovieList = () => {
     const fetchMovies = useMovieStore(selectFetchMovies);
     const moviesReady = useMovieStore(selectMoviesReady);
     const sortMovies = useMovieStore(selectSortMovies);
+    const [filter, setFilter] = React.useState("")
+    const handleSearchChange = (movie) => {
+      setFilter(movie.target.value)
+    }
 
     useEffect(() => {
         fetchMovies();
@@ -41,14 +49,6 @@ const MovieList = () => {
         queryParams.set("page", page);
         setQueryParams(queryParams);
     }
-    // const filterData = movies.filter((el) => {
-    //     if (movies.input === ''){
-    //         return el
-    //     }
-    //     else{
-    //         return el.text.lowerCase().includes(movies.input)
-    //     }
-    // })
 
     return (
         <Box sx={{
@@ -56,6 +56,12 @@ const MovieList = () => {
             flexDirection: 'column',
             mt: 5,
         }}>
+            <Search sx = {styleSearch.searchContainer}></Search>
+            <TextField 
+            onChange = {handleSearchChange} 
+            label = 'Search'
+            variant='standard'
+            sx = {styleSearch.searchInput} />
             <Box sx={{
                 mt: 5,
                 display: 'flex',
@@ -91,11 +97,6 @@ const MovieList = () => {
                     ))
                 }
             </Box>
-            {/* <ul>
-                {filterData.map((movie => (
-                        <MovieCard key={movie.title} movie={movie}></MovieCard>
-                )))}
-            </ul> */}
             <Button
                 variant="contained"
                 sx={{ ml: 2, mr: 2 }}
